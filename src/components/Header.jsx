@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsYoutube, BsSearch } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Header = () => {
   const [text, setText] = useState("");
   const navigate = useNavigate();
+  const { keyword } = useParams();
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -13,6 +14,8 @@ const Header = () => {
     e.preventDefault();
     navigate(`/videos/${text}`);
   };
+
+  useEffect(() => setText(keyword || ""), [keyword]);
 
   return (
     <header className="w-full flex p-5 text-2xl border-b border-zinc-600 mb-4">
