@@ -5,7 +5,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import VideoCard from "./VideoCard";
+import VideoCard from "../components/VideoCard";
 import Youtube from "../api/youtube";
 
 const Videos = () => {
@@ -43,7 +43,7 @@ const Videos = () => {
       {isLoading && <p>Loading...</p>}
       {error && <p>An error has occurred: {error.message}</p>}
       {videos && (
-        <ul>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 gap-y-4">
           {videos.map((item) => (
             <VideoCard key={item.id} video={item} />
           ))}

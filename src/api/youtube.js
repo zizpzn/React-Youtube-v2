@@ -17,7 +17,7 @@ export default class Youtube {
       .get("search", {
         params: {
           part: "snippet",
-          maxResults: 25,
+          maxResults: 20,
           type: "video",
           q: keyword,
         },
@@ -31,7 +31,7 @@ export default class Youtube {
       .get("videos", {
         params: {
           part: "snippet",
-          maxResults: 25,
+          maxResults: 20,
           chart: "mostPopular",
         },
       })
