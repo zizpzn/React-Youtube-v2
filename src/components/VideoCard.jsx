@@ -1,9 +1,16 @@
 import React from "react";
 import { format, render, cancel, register } from "timeago.js";
+import { useNavigate } from "react-router-dom";
 
 const VideoCard = ({ video }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/videos/watch/${video.id}`, { state: { video: video } });
+  };
+
   return (
-    <li>
+    <li onClick={handleClick}>
       <img
         className="w-full"
         src={video.snippet.thumbnails.medium.url}
