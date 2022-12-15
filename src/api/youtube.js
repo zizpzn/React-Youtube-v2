@@ -12,6 +12,20 @@ export default class Youtube {
     return keyword ? this.searchByKeyword(keyword) : this.mostPopular();
   }
 
+  async relatedVideos(id) {
+    return this.httpClient
+      .get("search", {
+        params: {
+          part: "snippet",
+          maxResults: 20,
+          type: "video",
+          relatedToVideos: id,
+        },
+      })
+      .then((res) => res.data.items)
+      .then((items) => items.map((item) => ({ ...item, id: item.id.videoId })));
+  }
+
   async searchByKeyword(keyword) {
     return this.httpClient
       .get("search", {
