@@ -8,8 +8,8 @@ const VideoDetail = () => {
     state: { video },
   } = useLocation();
   return (
-    <section>
-      <article>
+    <section className="flex flex-col lg:flex-row">
+      <article className="basis-4/6">
         <iframe
           id="player"
           type="text/html"
@@ -18,16 +18,16 @@ const VideoDetail = () => {
           src={`http://www.youtube.com/embed/${video.id}`}
           frameBorder="0"
         ></iframe>
-        <div>
-          <h2>{video.snippet.title}</h2>
+        <div className="p-8">
+          <h2 className="text-xl font-bold">{video.snippet.title}</h2>
           <ChannelInfo
             id={video.snippet.channelId}
-            title={video.snippet.channerTitle}
+            title={video.snippet.channelTitle}
           />
-          <pre>{video.snippet.description}</pre>
+          <pre className="whitespace-pre-wrap">{video.snippet.description}</pre>
         </div>
       </article>
-      <section>
+      <section className="basis-2/6">
         <RelatedVideos id={video.id} />
       </section>
     </section>

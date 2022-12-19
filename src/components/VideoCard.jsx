@@ -2,17 +2,18 @@ import React from "react";
 import { format, render, cancel, register } from "timeago.js";
 import { useNavigate } from "react-router-dom";
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, type }) => {
   const navigate = useNavigate();
+  const isList = type === "list";
 
   const handleClick = () => {
     navigate(`/videos/watch/${video.id}`, { state: { video: video } });
   };
 
   return (
-    <li onClick={handleClick}>
+    <li className={isList ? "flex gap-1 m-2" : ""} onClick={handleClick}>
       <img
-        className="w-full"
+        className={isList ? "w-60 mr-2" : "w-full"}
         src={video.snippet.thumbnails.medium.url}
         alt={video.snippet.title}
       />
