@@ -20,7 +20,9 @@ const VideoCard = ({ video, type }) => {
       <div>
         <h3 className="my-2 line-clamp-2">{video.snippet.title}</h3>
         <p className="text-sm opacity-80">{video.snippet.channelTitle}</p>
-        <p className="text-sm opacity-80">{format(video.snippet.publishdAt)}</p>
+        <p className="text-sm opacity-80">
+          {format(video.snippet.publishedAt)}
+        </p>
       </div>
     </li>
   );

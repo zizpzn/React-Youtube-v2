@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import VideoCard from "./VideoCard";
 import Youtube from "../api/youtube";
+import VideoCard from "./VideoCard";
 
 const RelatedVideos = ({ id }) => {
   const {
@@ -19,7 +19,7 @@ const RelatedVideos = ({ id }) => {
   return (
     <>
       {isLoading && <p>Loading...</p>}
-      {error && <p>Something is wrong 😖</p>}
+      {error && <p>An error has occurred: {error.message}</p>}
       {videos && (
         <ul>
           {videos.map((video) => (
